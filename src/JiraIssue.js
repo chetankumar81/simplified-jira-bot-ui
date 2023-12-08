@@ -3,9 +3,11 @@ import React, { useState } from "react";
 const JiraIssue = () => {
   const [issueId, setIssueId] = useState("");
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         `http://0.0.0.0:8080/api/jira/summary/?issue_id=${issueId}`
       );
@@ -18,6 +20,8 @@ const JiraIssue = () => {
       setResult(data);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -32,8 +36,12 @@ const JiraIssue = () => {
             onChange={(e) => setIssueId(e.target.value)}
           />
         </label>
-        <button style={{ marginLeft: "1rem" }} onClick={fetchData}>
-          Fetch Data
+        <button
+          className={loading ? "loading" : ""}
+          onClick={fetchData}
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Fetch Data"}
         </button>
       </div>
 
