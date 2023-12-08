@@ -13,19 +13,46 @@
   margin-top: 1rem;
 }
 
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
 label {
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 input {
-  padding: 0.5rem;
+  padding: 1rem;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  border-color: dodgerblue;
 }
 
 button {
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   font-size: 1rem;
   cursor: pointer;
+  background-color: dodgerblue;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: royalblue;
 }
 
 .result {
@@ -50,5 +77,3 @@ p {
   line-height: 1.5;
   color: #555;
 }
-
-/* Add more styling as needed */

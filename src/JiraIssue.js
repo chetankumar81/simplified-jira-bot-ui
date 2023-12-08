@@ -23,17 +23,19 @@ const JiraIssue = () => {
 
   return (
     <div>
-      <label>
-        Issue ID:
-        <input
-          type="text"
-          value={issueId}
-          onChange={(e) => setIssueId(e.target.value)}
-        />
-      </label>
-      <button style={{ marginLeft: "1rem" }} onClick={fetchData}>
-        Fetch Data
-      </button>
+      <div className="input-container">
+        <label>
+          Issue ID:
+          <input
+            type="text"
+            value={issueId}
+            onChange={(e) => setIssueId(e.target.value)}
+          />
+        </label>
+        <button style={{ marginLeft: "1rem" }} onClick={fetchData}>
+          Fetch Data
+        </button>
+      </div>
 
       {result && (
         <div className="result">
