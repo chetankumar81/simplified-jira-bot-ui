@@ -10,6 +10,11 @@ const JiraIssue = () => {
         `http://0.0.0.0:8080/api/jira/summary/?issue_id=${issueId}`
       );
       const data = await response.json();
+      // const data = {
+      //   text: [
+      //     "User unable to receive OTP for linking LazyPay account with merchant due to third-party web app issue. Problem traced to long merchant name causing OTP notification to exceed max length. Resolution involves updating validation for merchant name length in code and guidelines.",
+      //   ],
+      // };
       setResult(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -26,18 +31,14 @@ const JiraIssue = () => {
           onChange={(e) => setIssueId(e.target.value)}
         />
       </label>
-      <button onClick={fetchData}>Fetch Data</button>
+      <button style={{ marginLeft: "1rem" }} onClick={fetchData}>
+        Fetch Data
+      </button>
 
       {result && (
-        <div
-          style={{
-            border: "1px solid #ccc",
-            padding: "10px",
-            marginTop: "10px",
-          }}
-        >
+        <div className="result">
           <h3>Result:</h3>
-          <pre>{JSON.stringify(result, null, 2)}</pre>
+          <p>{result.text[0]}</p>
         </div>
       )}
     </div>
